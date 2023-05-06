@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const generateToken = async (user, expiresIn) => {
   try {
@@ -6,8 +7,10 @@ const generateToken = async (user, expiresIn) => {
       sub: user.id,
       name: user.firstName,
     };
-    // change algorith to rs256 when using ssh keys
-    const token = await jwt.sign(payload, "secret", { expiresIn });
+    const token = await jwt.sign(payload, process.env.PRIVATE_KEY, {
+      expiresIn,
+      algorithm: "RS256",
+    });
 
     return [null, token];
   } catch (err) {
