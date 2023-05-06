@@ -20,10 +20,13 @@ const getTimeline = async (req, res, next) => {
       req.id,
       "firstName lastName avatar friends friendRequests"
     ).populate("friends", "firstName lastName avatar");
+
     const userIds = [user._id, ...user.friends.map((friend) => friend._id)];
 
     const allPosts = Promise.all(userIds.map(async (id) => await getPosts(id)));
-    console.log((await allPosts).flat());
+    console.log(
+      (await allPosts).flat().sort((a, b) => b.createdAt - a.createdAt)
+    );
 
     res.send(user);
   } catch (err) {
