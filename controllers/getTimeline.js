@@ -9,8 +9,7 @@ async function getPosts(user) {
     );
     return posts;
   } catch (err) {
-    console.log(err);
-    res.send(err.message);
+    return res.json({ message: err.message });
   }
 }
 
@@ -24,14 +23,17 @@ const getTimeline = async (req, res, next) => {
     const userIds = [user._id, ...user.friends.map((friend) => friend._id)];
 
     const allPosts = Promise.all(userIds.map(async (id) => await getPosts(id)));
-    console.log(
-      (await allPosts).flat().sort((a, b) => b.createdAt - a.createdAt)
-    );
 
-    res.send(user);
+    const sortedPosts = (await allPosts)
+      .flat()
+      .sort((a, b) => b.createdAt - a.createdAt);
+
+    return res.json({
+      user,
+      posts: sortedPosts,
+    });
   } catch (err) {
-    console.log(err);
-    res.send(err.message);
+    return res.json({ message: err.message });
   }
 };
 

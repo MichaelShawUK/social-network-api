@@ -7,6 +7,10 @@ const isAuth = require("../middleware/isAuth");
 
 /* GET home page. */
 router.get("/", isAuth, getTimeline);
+router.post("/post", async function (req, res, next) {
+  console.log(req.body);
+  res.send("Uploaded..");
+});
 
 router.post("/register", handleRegister, handleLogin);
 router.post("/login", handleLogin);
