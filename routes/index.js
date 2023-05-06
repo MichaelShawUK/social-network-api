@@ -2,12 +2,11 @@ var express = require("express");
 var router = express.Router();
 const handleRegister = require("../controllers/handleRegister");
 const handleLogin = require("../controllers/handleLogin");
+const getTimeline = require("../controllers/getTimeline");
 const isAuth = require("../middleware/isAuth");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.status(200).json({ message: "OdinBook API" });
-});
+router.get("/", isAuth, getTimeline);
 
 router.post("/register", handleRegister, handleLogin);
 router.post("/login", handleLogin);

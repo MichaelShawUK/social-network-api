@@ -7,8 +7,8 @@ const isAuth = async (req, res, next) => {
     const accessToken = req.get("Authorization").slice(7);
     const [accessTokenError, payload] = await verifyToken(accessToken);
     if (payload) {
-      res.id = payload.sub;
-      res.name = payload.name;
+      req.id = payload.sub;
+      req.name = payload.name;
       return next();
     }
     if (accessTokenError?.message === "jwt expired") {
