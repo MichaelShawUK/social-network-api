@@ -9,7 +9,8 @@ const handleLike = async (req, res, next) => {
     } else {
       post.likes.push(userId);
     }
-    await post.save();
+    const doc = await post.save();
+    return res.json({ post: doc });
   } catch (err) {
     return res.json({ message: err.message });
   }
