@@ -2,15 +2,13 @@ var express = require("express");
 var router = express.Router();
 const handleRegister = require("../controllers/handleRegister");
 const handleLogin = require("../controllers/handleLogin");
+const handlePost = require("../controllers/handlePost");
 const getTimeline = require("../controllers/getTimeline");
 const isAuth = require("../middleware/isAuth");
 
 /* GET home page. */
 router.get("/", isAuth, getTimeline);
-router.post("/post", async function (req, res, next) {
-  console.log(req.body);
-  res.send("Uploaded..");
-});
+router.post("/post", isAuth, handlePost);
 
 router.post("/register", handleRegister, handleLogin);
 router.post("/login", handleLogin);
