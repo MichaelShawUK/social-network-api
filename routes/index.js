@@ -6,12 +6,15 @@ const handlePost = require("../controllers/handlePost");
 const handleLike = require("../controllers/handleLike");
 const handleComment = require("../controllers/handleComment");
 const getTimeline = require("../controllers/getTimeline");
+const getProfile = require("../controllers/getProfile");
 const isAuth = require("../middleware/isAuth");
 
 router.post("/register", handleRegister, handleLogin);
 router.post("/login", handleLogin);
 
 router.get("/", isAuth, getTimeline);
+router.get("/profile", isAuth, getProfile);
+
 router.post("/post", isAuth, handlePost);
 router.post("/like", isAuth, handleLike);
 router.post("/comment", isAuth, handleComment);
