@@ -18,17 +18,9 @@ const handleLogin = async (req, res, next) => {
       return res.json({ message: "Incorrect password" });
     }
 
-    const [accessTokenError, accessToken] = await generateToken(
-      user,
-      ACCESS_TOKEN_EXP
-    );
-    if (accessTokenError) throw accessTokenError;
+    const accessToken = await generateToken(user, ACCESS_TOKEN_EXP);
 
-    const [refreshTokenError, refreshToken] = await generateToken(
-      user,
-      REFRESH_TOKEN_EXP
-    );
-    if (refreshTokenError) throw refreshTokenError;
+    const refreshToken = await generateToken(user, REFRESH_TOKEN_EXP);
 
     res.cookie("refresh-token", refreshToken, { httpOnly: true });
 
