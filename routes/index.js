@@ -9,6 +9,7 @@ const getTimeline = require("../controllers/getTimeline");
 const getProfile = require("../controllers/getProfile");
 const getPeople = require("../controllers/getPeople");
 const handleFriendRequest = require("../controllers/handleFriendRequest");
+const handleRejectRequest = require("../controllers/handleRejectRequest");
 const handleFriendship = require("../controllers/handleFriendship");
 const isAuth = require("../middleware/isAuth");
 
@@ -23,6 +24,7 @@ router.post("/post", isAuth, handlePost);
 router.post("/like", isAuth, handleLike);
 router.post("/comment", isAuth, handleComment);
 router.post("/befriend", isAuth, handleFriendRequest);
+router.post("/reject", isAuth, handleRejectRequest);
 router.post("/friendship", isAuth, handleFriendship);
 
 router.get("/protected", isAuth, function (req, res, next) {
