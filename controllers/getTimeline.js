@@ -1,17 +1,5 @@
 const User = require("../models/User");
-const Post = require("../models/Post");
-
-async function getPosts(user) {
-  try {
-    const posts = await Post.find({ author: user }).populate(
-      "author",
-      "firstName lastName avatar"
-    );
-    return posts;
-  } catch (err) {
-    return res.json({ message: err.message });
-  }
-}
+const getPosts = require("../utils/getPosts");
 
 const getTimeline = async (req, res, next) => {
   try {
