@@ -18,7 +18,7 @@ router.post("/register", handleRegister, handleLogin);
 router.post("/login", handleLogin);
 
 router.get("/", isAuth, getTimeline);
-router.get("/profile", isAuth, getProfile);
+router.get("/profile/:userId", isAuth, getProfile);
 router.get("/people", isAuth, getPeople);
 
 router.post("/comments", isAuth, getComments);
