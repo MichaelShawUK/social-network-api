@@ -35,6 +35,7 @@ const handleLogin = async (req, res, next) => {
       firstName: user.firstName,
       lastName: user.lastName,
       avatar: user?.avatar,
+      userId: user._id,
       message: "Save access token to local storage and redirect to / via React",
     });
   } catch (err) {
