@@ -7,6 +7,8 @@ const getComments = async (req, res, next) => {
       "firstName lastName"
     );
 
+    comments.sort((a, b) => b.createdAt - a.createdAt);
+
     return res.json({ comments });
   } catch (err) {
     return res.json({ message: err.message });
