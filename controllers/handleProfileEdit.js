@@ -12,7 +12,8 @@ const handleProfileEdit = async (req, res, next) => {
     user.firstName = firstName;
     user.lastName = lastName;
 
-    await user.save();
+    const doc = await user.save();
+    return res.json({ user: doc });
   } catch (err) {
     return res.json({ message: err.message });
   }
