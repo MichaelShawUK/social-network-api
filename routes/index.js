@@ -3,6 +3,7 @@ var router = express.Router();
 const handleRegister = require("../controllers/handleRegister");
 const handleLogin = require("../controllers/handleLogin");
 const handlePost = require("../controllers/handlePost");
+const handleProfileEdit = require("../controllers/handleProfileEdit");
 const handleLike = require("../controllers/handleLike");
 const handleComment = require("../controllers/handleComment");
 const getTimeline = require("../controllers/getTimeline");
@@ -22,6 +23,7 @@ router.get("/profile/:userId", isAuth, getProfile);
 router.get("/people", isAuth, getPeople);
 
 router.post("/comments", isAuth, getComments);
+router.post("/edit", isAuth, handleProfileEdit);
 router.post("/post", isAuth, handlePost);
 router.post("/like", isAuth, handleLike);
 router.post("/comment", isAuth, handleComment);
