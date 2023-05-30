@@ -1,4 +1,5 @@
 const Comment = require("../models/Comment");
+const Post = require("../models/Post");
 
 const handleComment = async (req, res, next) => {
   try {
@@ -11,6 +12,11 @@ const handleComment = async (req, res, next) => {
       post,
     });
     const doc = await comment.save();
+
+    const commentedPost = await Post.findById(post);
+    commentedPost.hasComment = true;
+    await commentedPost.save();
+
     return res.json({ comment: doc });
   } catch (err) {
     return res.json({ message: err.message });

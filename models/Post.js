@@ -7,6 +7,7 @@ const PostSchema = new Schema(
     image: { type: String },
     author: { type: Schema.Types.ObjectId, ref: "User", required: true },
     likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    hasComment: { type: Boolean, default: false },
   },
   {
     timestamps: true,
