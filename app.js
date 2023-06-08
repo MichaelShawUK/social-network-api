@@ -3,11 +3,12 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 
 var indexRouter = require("./routes/index");
 
 async function connectDb() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/odinbook");
+  await mongoose.connect(process.env.MONGODB_REMOTE);
 }
 connectDb().catch((err) => console.log(err));
 
