@@ -24,12 +24,6 @@ const handleLogin = async (req, res, next) => {
 
     res.cookie("refresh-token", refreshToken, { httpOnly: true });
 
-    console.log(ACCESS_TOKEN_EXP);
-    console.log(REFRESH_TOKEN_EXP);
-
-    console.log(accessToken);
-    console.log(refreshToken);
-
     return res.json({
       token: accessToken,
       firstName: user.firstName,

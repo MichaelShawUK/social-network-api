@@ -41,7 +41,6 @@ const isAuth = async (req, res, next) => {
       });
     }
   } catch (err) {
-    console.log(err.message);
     return res.json({ message: err.message, redirect: "/login" });
   }
 };
