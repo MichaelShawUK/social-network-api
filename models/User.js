@@ -12,7 +12,13 @@ const UserSchema = new Schema({
       "https://res.cloudinary.com/dzpobfxwj/image/upload/v1684687531/odinbook/avatars/robot_ii1k31.png",
   },
   friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  friendRequests: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  friendRequests: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      default: ["6481fd24ff4d9ca798a531d1"],
+    },
+  ],
 });
 
 module.exports = mongoose.model("User", UserSchema);
