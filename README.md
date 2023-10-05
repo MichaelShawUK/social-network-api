@@ -1,4 +1,4 @@
-# Social Network
+# Social Network API
 
 :point_right: [Live App](https://odinbook-production-a5e1.up.railway.app/)\
 :floppy_disk: [Frontend Repo](https://github.com/MichaelShawUK/social-network)
