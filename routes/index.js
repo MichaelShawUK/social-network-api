@@ -35,7 +35,7 @@ router.get("/protected", isAuth, function (req, res, next) {
   return res.send(`id: ${res.id} -- name: ${res.name}`);
 });
 
-import User from "../models/User";
+const user = require("../models/User");
 
 const getUsers = async (req, res, next) => {
   try {
