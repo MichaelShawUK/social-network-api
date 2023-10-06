@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://odinbook-production-a5e1.up.railway.app/",
+    origin: "odinbook-production-a5e1.up.railway.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204,
