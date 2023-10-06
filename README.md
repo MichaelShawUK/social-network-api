@@ -1,6 +1,6 @@
 # Social Network API
 
-:point_right: [Live App](https://odinbook-production-a5e1.up.railway.app/)\
+:point_right: [Live App](https://odinbook-production-a5e1.up.railway.app/) (Take Demo Tour)\
 :floppy_disk: [Frontend Repo](https://github.com/MichaelShawUK/social-network)
 
 This app allows users to interact with one another and develop a social network. 
