@@ -9,6 +9,7 @@ var indexRouter = require("./routes/index");
 
 async function connectDb() {
   await mongoose.connect(process.env.MONGODB_REMOTE);
+  // await mongoose.connect(process.env.MONGODB_LOCAL);
 }
 connectDb().catch((err) => console.log(err));
 
@@ -18,7 +19,8 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors({ origin: "https://odinbook-production-a5e1.up.railway.app" }));
+// app.use(cors({ origin: "https://odinbook-production-a5e1.up.railway.app" }));
+app.use(cors());
 
 app.use("/", indexRouter);
 
