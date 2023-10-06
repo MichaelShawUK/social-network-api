@@ -14,14 +14,12 @@ connectDb().catch((err) => console.log(err));
 
 var app = express();
 
-app.use(cors());
-
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(cors({ origin: "https://odinbook-production-a5e1.up.railway.app" }));
-// app.use(cors({ origin: true }));
+app.use(cors());
 
 app.use("/", indexRouter);
 
